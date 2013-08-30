@@ -1,0 +1,8 @@
+{
+"nodes":[
+<%= raw @nodes.map { |n| '{"name":"' + "#{n}" + '","group":1}' }.join(',') %>
+],
+"links":[
+<%= raw @gowalla_edges.map { |g| '{"source":' + "#{g.user1}" + ',"target":' + "#{g.user2}" + ',"value":1' +'}' }.join(',') %>
+]
+}

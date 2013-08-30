@@ -1,0 +1,37 @@
+<%= form_for(@gowalla_total_checkin) do |f| %>
+  <% if @gowalla_total_checkin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gowalla_total_checkin.errors.count, "error") %> prohibited this gowalla_total_checkin from being saved:</h2>
+
+      <ul>
+      <% @gowalla_total_checkin.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :check_in_time %><br />
+    <%= f.text_field :check_in_time %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :location_id %><br />
+    <%= f.text_field :location_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

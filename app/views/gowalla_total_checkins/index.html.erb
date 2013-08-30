@@ -1,0 +1,88 @@
+<div class="jumbotron">
+<h1>Listing gowalla_total_checkins</h1>
+</div>
+
+<div align="center">
+<form class="form-search" accept-charset="UTF-8" action="/gowalla_total_checkins" method="search">
+<table>
+<tr><td>User:</td><td><input type="text" name="i_user" /></td></tr>
+<tr><td>Check in time:</td><td><input type="text" name="i_time_f" placeholder="From"/></td><td><input type="text" name="i_time_t" placeholder="To"/></td></tr>
+<tr><td>Latitude:</td><td><input type="text" name="i_lat_f" placeholder="From"/></td><td><input type="text" name="i_lat_t" placeholder="To"/></td></tr>
+<tr><td>Longitude:</td><td><input type="text" name="i_lon_f" placeholder="From"/></td><td><input type="text" name="i_lon_t" placeholder="To"/></td></tr>
+</table>
+<button type="submit" class="btn btn-primary">Search</button>
+</form>
+</div>
+
+<div align="center">
+<table class="table table-condensed">
+  <tr>
+    <th>User</th>
+    <th>Check in time</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Location</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gowalla_total_checkins_p.each do |gowalla_total_checkin| %>
+  <tr>
+    <td><%= gowalla_total_checkin.user %></td>
+    <td><%= gowalla_total_checkin.check_in_time %></td>
+    <td><%= gowalla_total_checkin.latitude %></td>
+    <td><%= gowalla_total_checkin.longitude %></td>
+    <td><%= gowalla_total_checkin.location_id %></td>
+    <td><%= link_to 'Show', gowalla_total_checkin %></td>
+    <td><%= link_to 'Edit', edit_gowalla_total_checkin_path(gowalla_total_checkin) %></td>
+    <td><%= link_to 'Destroy', gowalla_total_checkin, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @gowalla_total_checkins_p %>
+
+<%= gmaps4rails(@json) %>
+
+<br />
+
+<a class="btn btn-success" href="/gowalla_total_checkins/new">New Gowalla total checkin</a>
+<a class="btn btn-success" href="..">Back</a>
+</div>
+
+<style type="text/css">
+    body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+    /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 50px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+</style>

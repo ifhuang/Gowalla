@@ -1,0 +1,134 @@
+<div class="jumbotron">
+<h1>Listing gowalla_edges</h1>
+</div>
+
+<div align="center">
+<table class="table table-condensed">
+  <tr>
+    <th>User1</th>
+    <th>User2</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gowalla_edges.each do |gowalla_edge| %>
+  <tr>
+    <td><%= gowalla_edge.user1 %></td>
+    <td><%= gowalla_edge.user2 %></td>
+    <td><%= link_to 'Show', gowalla_edge %></td>
+    <td><%= link_to 'Edit', edit_gowalla_edge_path(gowalla_edge) %></td>
+    <td><%= link_to 'Destroy', gowalla_edge, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @gowalla_edges %>
+
+<style type="text/css">
+    body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+    /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 50px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+</style>
+
+<style>
+
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+
+</style>
+
+<script>
+
+var width = 400,
+    height = 300;
+
+var color = d3.scale.category20();
+
+var force = d3.layout.force()
+    .charge(-120)
+    .linkDistance(30)
+    .size([width, height]);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("style", "display: block; margin: auto;");
+
+d3.json("/gowalla_edges.json", function(error, graph) {
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", 5)
+      .style("fill", function(d) { return color(d.group); })
+      .call(force.drag);
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+});
+
+</script>
+
+<br />
+<a class="btn btn-success" href="/gowalla_edges/new">New Gowalla total checkin</a>
+<a class="btn btn-success" href="..">Back</a>
+</div>

@@ -1,0 +1,25 @@
+<%= form_for(@gowalla_edge) do |f| %>
+  <% if @gowalla_edge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gowalla_edge.errors.count, "error") %> prohibited this gowalla_edge from being saved:</h2>
+
+      <ul>
+      <% @gowalla_edge.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user1 %><br />
+    <%= f.text_field :user1 %>
+  </div>
+  <div class="field">
+    <%= f.label :user2 %><br />
+    <%= f.text_field :user2 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

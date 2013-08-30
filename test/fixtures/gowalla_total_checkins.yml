@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: MyString
+  check_in_time: MyString
+  latitude: MyString
+  longitude: MyString
+  location_id: MyString
+
+two:
+  user: MyString
+  check_in_time: MyString
+  latitude: MyString
+  longitude: MyString
+  location_id: MyString

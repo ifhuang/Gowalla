@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @gowalla_total_checkin.user %>
+</p>
+
+<p>
+  <b>Check in time:</b>
+  <%= @gowalla_total_checkin.check_in_time %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @gowalla_total_checkin.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @gowalla_total_checkin.longitude %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @gowalla_total_checkin.location_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_gowalla_total_checkin_path(@gowalla_total_checkin) %> |
+<%= link_to 'Back', gowalla_total_checkins_path %>
