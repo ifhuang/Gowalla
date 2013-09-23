@@ -1,1 +1,3 @@
+Gowalla
+=========
 Gowalla is a visualization of Gowalla data implemented in Rails.
