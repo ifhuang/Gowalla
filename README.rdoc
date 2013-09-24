@@ -1,1 +1,1 @@
-Gowalla is a visualization of Gowalla data implemented in Rails.
+Gowalla is a simple visualization of Gowalla dataset (http://snap.stanford.edu/data/loc-gowalla.html) implemented in rails/gmap4rails/will_paginate/d3.js/bootstrap.
